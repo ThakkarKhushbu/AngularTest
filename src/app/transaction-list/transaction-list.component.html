@@ -1,0 +1,32 @@
+<cdk-virtual-scroll-viewport [style.height.px]="gridHeight" (scrolledIndexChange)="nextTransaction($event, (rows[rows.length - 1][0]))">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+      <ng-container matColumnDef="row_id">
+        <th mat-header-cell *matHeaderCellDef> Row_Id </th>
+        <td mat-cell *matCellDef="let element"> {{element[0]}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="time">
+        <th mat-header-cell *matHeaderCellDef> Time </th>
+        <td mat-cell *matCellDef="let element"> {{element[1] |date:'medium'}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Type </th>
+        <td mat-cell *matCellDef="let element"> {{element[2]}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="sender">
+        <th mat-header-cell *matHeaderCellDef> Sender </th>
+        <td mat-cell *matCellDef="let element"> {{element[3]}} </td>
+      </ng-container>
+      <ng-container matColumnDef="volume">
+        <th mat-header-cell *matHeaderCellDef> Volume </th>
+        <td mat-cell *matCellDef="let element"> {{element[4]}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <ng-template let-row matRowDef cdkVirtualFor [matRowDefColumns]="displayedColumns" [cdkVirtualForOf]="rows">
+        <tr mat-row></tr>
+      </ng-template>
+    </table>
+  </cdk-virtual-scroll-viewport>
