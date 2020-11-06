@@ -60,7 +60,6 @@ export class TableVirtualScrollStrategy implements VirtualScrollStrategy {
 
   private updateContent(viewport: CdkVirtualScrollViewport) {
     if (this.viewport) {
-        debugger
       const newIndex = Math.max(0, Math.round((viewport.measureScrollOffset() - this.scrollHeader) / this.scrollHeight) - 2);
       console.log("Index" + newIndex + "Scroll Height"+  this.scrollHeight)
       viewport.setRenderedContentOffset(this.scrollHeight * newIndex);
@@ -71,6 +70,7 @@ export class TableVirtualScrollStrategy implements VirtualScrollStrategy {
   }
 
   getTransactionData(): Observable<any> {
+    debugger
     const url = getTransactionURL + "?columns=row_id,time,type,sender,volume&receiver=tz1gfArv665EUkSg2ojMBzcbfwuPxAvqPvjo&type=transaction&limit=10" ;
     return this._coreHttpService.httpGetRequest<any>(
         url,
